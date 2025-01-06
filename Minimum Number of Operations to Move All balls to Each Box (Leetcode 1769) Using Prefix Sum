@@ -1,0 +1,24 @@
+class Solution {
+    public int[] minOperations(String boxes) {
+        int n = boxes.length();
+        int arr[] = new int[n];
+        int leftBalls = 0;
+        int rightBalls = 0;
+        int leftMoves = 0;
+        int rightMoves = 0;
+
+        for( int i = 0 ; i < n ; i++ ) {
+            arr[i] += leftMoves ;
+            if(boxes.charAt(i) == '1')
+               leftBalls += 1 ;
+            leftMoves += leftBalls ;
+
+            int j = n - i - 1 ;
+            arr[j] += rightMoves ;
+            if(boxes.charAt(j) == '1')
+               rightBalls += 1 ;
+            rightMoves += rightBalls ;
+        }
+        return arr;
+    }
+}
